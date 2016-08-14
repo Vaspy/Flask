@@ -1,11 +1,15 @@
-from flask import Flask, render_template
-import requests
-from yandex_translate import YandexTranslate
+from flask import Flask, render_template, request
+from randomw import randomtorus
 app=Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('starter-template.html')
+    translation=None
+    res=None
+    if request.method=='POST' and 'count' in request.form:
+        #assigning None for no request
+        translation=randomtorus(request.form['count'])
+    return render_template('form.html', res=translation)
 
 if __name__ == '__main__':
     app.run(debug=True)
