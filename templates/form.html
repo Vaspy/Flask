@@ -2,12 +2,19 @@
 <html lang="en">
     <body>
         <form method="post" action="">
-            How much words? 
+            How much words?
             <input type="text" name="count">
             <input type="submit" name="submit" value="Довай ножимай, поговорим!">
         </form>
         {% if request.form['count'] %}
-        <kbd>{{ res }}</kbd>
+        <kbd>Переводим: {{ org }}</kbd><br>
+        <kbd>Перевод: {{ res }}</kbd>
         {% endif %}
+        <table>
+            <tr>
+                <th>Origin</th>
+                <th>Trans</th>
+            </tr>
+
     </body>
 </html>
