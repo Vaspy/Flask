@@ -7,14 +7,19 @@
             <input type="submit" name="submit" value="Довай ножимай, поговорим!">
         </form>
         {% if request.form['count'] %}
-        <kbd>Переводим: {{ org }}</kbd><br>
-        <kbd>Перевод: {{ res }}</kbd>
+        <kbd>Переводим: {{ words }}</kbd><br>
+        <kbd>Перевод: {{ translation }}</kbd>
         {% endif %}
         <table>
             <tr>
                 <th>Origin</th>
                 <th>Trans</th>
             </tr>
-
+            {% for i in n %}
+              <tr>
+                <td>{{ words[i] }}</td>
+                <td>{{ translation[i] }}</td>
+            </tr>
+            {% endfor %}
     </body>
 </html>

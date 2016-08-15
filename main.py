@@ -12,7 +12,9 @@ def index():
         #assigning None for no request
         words=view.getrandom(request.form['count'])
         translation=view.gettranslate(words)
-        return render_template('form.html', org=words.split(), res=translation)
+        print('Элементы: ', words[0], translation[0])
+        print('Типы: ', type(words), type(translation))
+        return render_template('form.html', words=words, translation=translation, n=range(len(words)))
     else:
         return render_template('form.html')
 if __name__ == '__main__':

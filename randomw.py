@@ -9,13 +9,15 @@ class yaTranslation():
         for i in range(0,q):
             word=requests.get('http://randomword.setgetgo.com/get.php').text
             bunch+=" {}".format(word)
-        return(bunch[1:])
+            banch=bunch[1:].split()
+        return(banch)
 
     def gettranslate(self, trans):
-        if type(trans) is str:
+        if type(trans)==list:
             translate=YandexTranslate('trnsl.1.1.20160807T163932Z.f57cf5ac8b5daece.a4bfdf2addc8b214a91da651c04f3daa4fe46b7b')
-            res=translate.translate('{0}'.format(trans), 'ru')
+            trans1=' '.join(trans)
+            res=translate.translate('{0}'.format(trans1), 'ru')
             ###RETURNS [] WITH WORDS
-            return(res['text'][0].split(" "))
+            return(res['text'][0]).split(' ')
         else:
-            return(None)
+            return('NOT LIST')
